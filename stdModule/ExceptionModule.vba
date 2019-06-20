@@ -14,6 +14,10 @@ Public Sub CreateMsgDict()
     Set msgIdDict = CommonModule.Dict()
     With msgIdDict
         .Add "err-00-000", Array("error from:" & msgArgHolder & vbCrLf & "error:" & msgArgHolder, "未知异常")
+        .Add "err-01-001", Array("路径未指定", "error")
+		.Add "err-01-002", Array("路径不存在" & vbCrLf & msgArgHolder, "error")
+		
+		.Add "svn-01-001", Array("请确认是否执行SNV更新", "SVN更新确认")
     End With
 End Sub
 
