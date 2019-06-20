@@ -246,3 +246,13 @@ Public Sub CloseExcelFile(ByVal target As String)
     Set axls = Nothing
     Set MyXL = Nothing
 End Sub
+
+'创建一个字典对象（用完后，需要手动删除该对象）
+Public Function Dict() As Object
+    Set Dict = CreateObject("Scripting.Dictionary")
+End Function
+
+'创建一个WscriptShell对象（用完后，需要手动删除该对象）
+Public Function WscriptShell() As Object
+    Set WscriptShell = CreateObject("Wscript.shell")
+End Function
