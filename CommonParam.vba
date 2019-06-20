@@ -8,3 +8,6 @@ Public nowProjectName As String
 
 '文件分隔符
 Public Const pathSeq As String = "\"
+
+'msg信息参数的占位符
+Public Const msgArgHolder As String = "@"
