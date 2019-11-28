@@ -1,6 +1,42 @@
 Option Explicit
 
-'所有sub的启动前处理(提高整体性能)
+
+'初始化VBA工具
+'使用方法：
+'[Microsoft Excel Objects].ThisWorkbook
+'
+'Public Sub Workbook_Open()
+'   Call CommonModule.System_Tool_Init
+'End Sub
+'
+Public Sub System_Tool_Init()
+    On Error GoTo throw
+
+    Call System_Protected
+    If ThisWorkbook.ReadOnly Then
+        Call ExceptionModule.InfoMationPopup("msg-01-001")
+        ActiveWorkbook.Close False
+    End If
+    End
+
+throw:
+    Call ExceptionModule.ThrowHandle
+End Sub
+
+'保护文件不被修改
+Public Sub System_Protected()
+    Application.Calculation = xlCalculationAutomatic
+    ActiveWorkbook.CheckCompatibility = True
+    Application.ScreenUpdating = True
+    Application.DisplayAlerts = True
+
+    If Not ActiveSheet.ProtectContents Then
+        ActiveSheet.Protect "xxx"
+    End If
+    ActiveWorkbook.Protect "xxx"
+End Sub
+
+'所有sub的启动前处理(提高整体性能) ，在Controller中使用
 Public Sub PreAllSubAndFunction()
     Application.DisplayAlerts = False
     Application.ScreenUpdating = False
