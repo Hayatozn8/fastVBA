@@ -1,0 +1,6 @@
+'这是一个sheet示例，不需要添加到module中
+
+'响应单元格切换事件，来响应指定区域单元格的事件
+Private Sub Worksheet_SelectionChange(ByVal target As Range)
+    Call 响应方法
+End Sub
